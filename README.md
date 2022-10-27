@@ -30,7 +30,6 @@ plugins=(... kustomize)
 | `kzc`   | `kustomize create`                                           | Runs `kustomize create`                                                                       |
 | `kzca`  | `kustomize create`                                           | Runs `kustomize create --autodetect`                                                          |
 | `kzcar` | `kustomize create`                                           | Runs `kustomize create --autodetect --recursive`                                              |
-| `keti`  | `kubectl exec -ti`                                           | Drop into an interactive terminal on a container                                              |
 | `kze`   | `kustomize edit`                                             | Runs `kustomize edit`                                                                         |
 
 ## Honorable mention
