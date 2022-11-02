@@ -10,6 +10,12 @@ To use this plugin:
 git clone https://github.com/ralgozino/oh-my-kustomize ~/.oh-my-zsh/plugins/kustomize
 ```
 
+or in your custom plugins folder:
+
+```bash
+git clone https://github.com/ralgozino/oh-my-kustomize ~/.oh-my-zsh/custom/plugins/kustomize
+```
+
 2. Add `kustomize` to the plugins array in your `.zshrc` file:
 
 ```zsh
