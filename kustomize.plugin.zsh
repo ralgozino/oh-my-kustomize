@@ -28,6 +28,8 @@ if (( ${+_comps[kustomize]} )); then
   function kzba() { kustomize build "$@" | kubectl apply -f -; }
   # Kustomize build and pipe to kubectl apply server side
   function kzbas() { kustomize build "$@" | kubectl apply -f - --server-side; }
+  # Kustomize build and pipe to kubectl apply server side with force-conflicts
+  function kzbasf() { kustomize build "$@" | kubectl apply -f - --server-side --froce-conflicts; }
 fi
 
 # Create a new kustomization

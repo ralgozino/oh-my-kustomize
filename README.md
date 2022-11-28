@@ -41,6 +41,7 @@ plugins=(... kustomize)
 | `kzby`  | `kustomize build <args> \| yh`                               | Will run kustomize build and pipe the output to `yh` for YAML formatting.                     |
 | `kzba`  | `kustomize build <args> \| kubectl apply -f -`               | Will run kustomize build and pipe the output to `kubectl apply`.                              |
 | `kzbas` | `kustomize build <args> \| kubectl apply -f - --server-side` | Will run kustomize build and pipe the output to `kubectl apply --server-side`.                |
+| `kzbasf` | `kustomize build <args> \| kubectl apply -f - --server-side --force-conflicts` | Will run kustomize build and pipe the output to `kubectl apply --server-side --froce-conflicts`.                |
 | `kzc`   | `kustomize create`                                           | Runs `kustomize create`                                                                       |
 | `kzca`  | `kustomize create`                                           | Runs `kustomize create --autodetect`                                                          |
 | `kzcar` | `kustomize create`                                           | Runs `kustomize create --autodetect --recursive`                                              |
