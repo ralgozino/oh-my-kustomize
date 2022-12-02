@@ -46,6 +46,7 @@ plugins=(... kustomize)
 | `kzca`  | `kustomize create`                                           | Runs `kustomize create --autodetect`                                                          |
 | `kzcar` | `kustomize create`                                           | Runs `kustomize create --autodetect --recursive`                                              |
 | `kze`   | `kustomize edit`                                             | Runs `kustomize edit`                                                                         |
+| `kzv`   | `kustomize version`                                          | Runs `kustomize version`                                                                      |
 
 ## Honorable mention
 

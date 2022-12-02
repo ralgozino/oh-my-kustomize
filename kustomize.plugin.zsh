@@ -20,6 +20,21 @@ alias kz=kustomize
 # Build
 alias kzb='kustomize build'
 
+# Create a new kustomization
+alias kzc='kustomize create'
+
+# Create a new kustomization and autodetect manifests in current folder
+alias kzca='kustomize create --autodetect'
+
+# Create a new kustomization and autodetect manifests current and all sub folders
+alias kzcar='kustomize create --autodetect --recursive'
+
+# Edit
+alias kze='kustomize edit'
+
+# Print version
+alias kzv='kustomize version'
+
 # Only run if the user actually has kustomize installed
 if (( ${+_comps[kustomize]} )); then
   # Build and pipe output to YQ for colors
@@ -31,13 +46,3 @@ if (( ${+_comps[kustomize]} )); then
   # Kustomize build and pipe to kubectl apply server side with force-conflicts
   function kzbasf() { kustomize build "$@" | kubectl apply -f - --server-side --force-conflicts; }
 fi
-
-# Create a new kustomization
-alias kzc='kustomize create'
-# Create a new kustomization and autodetect manifests in current folder
-alias kzca='kustomize create --autodetect'
-# Create a new kustomization and autodetect manifests current and all sub folders
-alias kzcar='kustomize create --autodetect --recursive'
-# Edit
-alias kze='kustomize edit'
-
