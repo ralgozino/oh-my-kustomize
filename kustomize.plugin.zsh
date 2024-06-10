@@ -45,4 +45,6 @@ if (( ${+_comps[kustomize]} )); then
   function kzbas() { kustomize build "$@" | kubectl apply -f - --server-side; }
   # Kustomize build and pipe to kubectl apply server side with force-conflicts
   function kzbasf() { kustomize build "$@" | kubectl apply -f - --server-side --force-conflicts; }
+  # Kustomize build and pipe to kubectl delete
+  function kzbdel() { kustomize build "$@" | kubectl delete -f -; }
 fi
