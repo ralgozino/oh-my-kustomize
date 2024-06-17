@@ -34,19 +34,20 @@ plugins=(... kustomize)
 
 ## Aliases
 
-| Alias   | Command                                                      | Description                                                                                   |
-| :------ | :----------------------------------------------------------- | :-------------------------------------------------------------------------------------------- |
-| `kz`    | `kustomize`                                                  | Runs kustomize, you can pass the subcomands you want, i.e. `kz build`                         |
-| `kzb`   | `kustomize build`                                            | Runs kustoimze build, you can pass more flags and argunments to the command, like the folder. |
-| `kzby`  | `kustomize build <args> \| yh`                               | Will run kustomize build and pipe the output to `yh` for YAML formatting.                     |
-| `kzba`  | `kustomize build <args> \| kubectl apply -f -`               | Will run kustomize build and pipe the output to `kubectl apply`.                              |
-| `kzbas` | `kustomize build <args> \| kubectl apply -f - --server-side` | Will run kustomize build and pipe the output to `kubectl apply --server-side`.                |
-| `kzbasf` | `kustomize build <args> \| kubectl apply -f - --server-side --force-conflicts` | Will run kustomize build and pipe the output to `kubectl apply --server-side --froce-conflicts`.                |
-| `kzc`   | `kustomize create`                                           | Runs `kustomize create`                                                                       |
-| `kzca`  | `kustomize create`                                           | Runs `kustomize create --autodetect`                                                          |
-| `kzcar` | `kustomize create`                                           | Runs `kustomize create --autodetect --recursive`                                              |
-| `kze`   | `kustomize edit`                                             | Runs `kustomize edit`                                                                         |
-| `kzv`   | `kustomize version`                                          | Runs `kustomize version`                                                                      |
+| Alias    | Command                                                                        | Description                                                                                      |
+| :------- | :----------------------------------------------------------------------------- | :----------------------------------------------------------------------------------------------- |
+| `kz`     | `kustomize`                                                                    | Runs kustomize, you can pass the subcomands you want, i.e. `kz build`                            |
+| `kzb`    | `kustomize build`                                                              | Runs kustoimze build, you can pass more flags and argunments to the command, like the folder.    |
+| `kzby`   | `kustomize build <args> \| yh`                                                 | Will run kustomize build and pipe the output to `yh` for YAML formatting.                        |
+| `kzba`   | `kustomize build <args> \| kubectl apply -f -`                                 | Will run kustomize build and pipe the output to `kubectl apply`.                                 |
+| `kzbas`  | `kustomize build <args> \| kubectl apply -f - --server-side`                   | Will run kustomize build and pipe the output to `kubectl apply --server-side`.                   |
+| `kzbasf` | `kustomize build <args> \| kubectl apply -f - --server-side --force-conflicts` | Will run kustomize build and pipe the output to `kubectl apply --server-side --froce-conflicts`. |
+| `kzbdel` | `kustomize build <args> \| kubectl delete -f - `                               | Will run kustomize build and pipe the output to `kubectl delete`.                                |
+| `kzc`    | `kustomize create`                                                             | Runs `kustomize create`                                                                          |
+| `kzca`   | `kustomize create`                                                             | Runs `kustomize create --autodetect`                                                             |
+| `kzcar`  | `kustomize create`                                                             | Runs `kustomize create --autodetect --recursive`                                                 |
+| `kze`    | `kustomize edit`                                                               | Runs `kustomize edit`                                                                            |
+| `kzv`    | `kustomize version`                                                            | Runs `kustomize version`                                                                         |
 
 ## Honorable mention
 
