@@ -24,9 +24,9 @@ plugins=(... kustomize)
 
 3. Open a new shell or source your `.zshrc` file.
 
-> 💡 Notice that Kustomize changed the command to generate the command completinos in v3.8.6.
+> 💡 Notice that Kustomize changed the command to generate the command completions in v3.8.6.
 >
-> For versions 3.8.5 or earlier you'll need to activate the command completion manualy by running:
+> For versions 3.8.5 or earlier you'll need to activate the command completion manually by running:
 >
 > ```bash
 > kustomize install-completions
