@@ -1,4 +1,4 @@
-# Command Completino
+# Command Completion
 if (( $+commands[kustomize] )); then
   # If the completion file does not exist, generate it and then source it
   if is-at-least 3.8.6 $(kustomize version | awk 'match($0, /([0-9.]+) /) { print substr($0, RSTART, RLENGTH) }'); then
