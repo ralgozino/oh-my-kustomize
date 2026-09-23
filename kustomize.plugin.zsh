@@ -1,16 +1,20 @@
+if (( ! $+commands[kustomize] )); then
+  return
+fi
+
 # Command Completion
-if (( $+commands[kustomize] )); then
-  # If the completion file does not exist, generate it and then source it
-  if is-at-least 3.8.6 $(kustomize version | awk 'match($0, /([0-9.]+) /) { print substr($0, RSTART, RLENGTH) }'); then
-  # Otherwise, source it and regenerate in the background
-  if [[ ! -f "$ZSH_CACHE_DIR/completions/_kustomize" ]]; then
-    kustomize completion zsh | tee "$ZSH_CACHE_DIR/completions/_kustomize" >/dev/null
-    source "$ZSH_CACHE_DIR/completions/_kustomize"
-  else
-    source "$ZSH_CACHE_DIR/completions/_kustomize"
-    kustomize completion zsh | tee "$ZSH_CACHE_DIR/completions/_kustomize" >/dev/null &|
-  fi
-  fi
+# If the completion file doesn't exist yet, we need to autoload it and
+# bind it to `kustomize`. Otherwise, compinit will have already done that.
+if [[ ! -f "$ZSH_CACHE_DIR/completions/_kustomize" ]]; then
+  typeset -g -A _comps
+  autoload -Uz _kustomize
+  _comps[kustomize]=_kustomize
+fi
+
+# Regenerate the completion in the background only when the binary is newer
+# than the cached file (e.g. after an upgrade).
+if [[ ! -f "$ZSH_CACHE_DIR/completions/_kustomize" || $commands[kustomize] -nt "$ZSH_CACHE_DIR/completions/_kustomize" ]]; then
+  kustomize completion zsh 2>/dev/null >| "$ZSH_CACHE_DIR/completions/_kustomize" &|
 fi
 
 
@@ -35,16 +39,13 @@ alias kze='kustomize edit'
 # Print version
 alias kzv='kustomize version'
 
-# Only run if the user actually has kustomize installed
-if (( ${+_comps[kustomize]} )); then
-  # Build and pipe output to YQ for colors
-  function kzby() { kustomize build "$@" | yh; }
-  # Kustomize build and pipe to kubectl apply
-  function kzba() { kustomize build "$@" | kubectl apply -f -; }
-  # Kustomize build and pipe to kubectl apply server side
-  function kzbas() { kustomize build "$@" | kubectl apply -f - --server-side; }
-  # Kustomize build and pipe to kubectl apply server side with force-conflicts
-  function kzbasf() { kustomize build "$@" | kubectl apply -f - --server-side --force-conflicts; }
-  # Kustomize build and pipe to kubectl delete
-  function kzbdel() { kustomize build "$@" | kubectl delete -f -; }
-fi
+# Build and pipe output to yq for colors
+function kzby() { kustomize build "$@" | yq -P -C; }
+# Kustomize build and pipe to kubectl apply
+function kzba() { kustomize build "$@" | kubectl apply -f -; }
+# Kustomize build and pipe to kubectl apply server side
+function kzbas() { kustomize build "$@" | kubectl apply -f - --server-side; }
+# Kustomize build and pipe to kubectl apply server side with force-conflicts
+function kzbasf() { kustomize build "$@" | kubectl apply -f - --server-side --force-conflicts; }
+# Kustomize build and pipe to kubectl delete
+function kzbdel() { kustomize build "$@" | kubectl delete -f -; }

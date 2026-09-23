@@ -24,28 +24,20 @@ plugins=(... kustomize)
 
 3. Open a new shell or source your `.zshrc` file.
 
-> 💡 Notice that Kustomize changed the command to generate the command completions in v3.8.6.
->
-> For versions 3.8.5 or earlier you'll need to activate the command completion manually by running:
->
-> ```bash
-> kustomize install-completions
-> ```
-
 ## Aliases
 
 | Alias    | Command                                                                        | Description                                                                                      |
 | :------- | :----------------------------------------------------------------------------- | :----------------------------------------------------------------------------------------------- |
-| `kz`     | `kustomize`                                                                    | Runs kustomize, you can pass the subcomands you want, i.e. `kz build`                            |
-| `kzb`    | `kustomize build`                                                              | Runs kustoimze build, you can pass more flags and argunments to the command, like the folder.    |
-| `kzby`   | `kustomize build <args> \| yh`                                                 | Will run kustomize build and pipe the output to `yh` for YAML formatting.                        |
+| `kz`     | `kustomize`                                                                    | Runs kustomize, you can pass the subcommands you want, i.e. `kz build`                            |
+| `kzb`    | `kustomize build`                                                              | Runs kustomize build, you can pass more flags and arguments to the command, like the folder.    |
+| `kzby`   | `kustomize build <args> \| yq -P -C`                                           | Will run kustomize build and pipe the output to [`yq`](https://github.com/mikefarah/yq) for YAML highlighting.                        |
 | `kzba`   | `kustomize build <args> \| kubectl apply -f -`                                 | Will run kustomize build and pipe the output to `kubectl apply`.                                 |
 | `kzbas`  | `kustomize build <args> \| kubectl apply -f - --server-side`                   | Will run kustomize build and pipe the output to `kubectl apply --server-side`.                   |
-| `kzbasf` | `kustomize build <args> \| kubectl apply -f - --server-side --force-conflicts` | Will run kustomize build and pipe the output to `kubectl apply --server-side --froce-conflicts`. |
+| `kzbasf` | `kustomize build <args> \| kubectl apply -f - --server-side --force-conflicts` | Will run kustomize build and pipe the output to `kubectl apply --server-side --force-conflicts`. |
 | `kzbdel` | `kustomize build <args> \| kubectl delete -f - `                               | Will run kustomize build and pipe the output to `kubectl delete`.                                |
 | `kzc`    | `kustomize create`                                                             | Runs `kustomize create`                                                                          |
-| `kzca`   | `kustomize create`                                                             | Runs `kustomize create --autodetect`                                                             |
-| `kzcar`  | `kustomize create`                                                             | Runs `kustomize create --autodetect --recursive`                                                 |
+| `kzca`   | `kustomize create --autodetect`                                                | Runs `kustomize create --autodetect`                                                             |
+| `kzcar`  | `kustomize create --autodetect --recursive`                                    | Runs `kustomize create --autodetect --recursive`                                                 |
 | `kze`    | `kustomize edit`                                                               | Runs `kustomize edit`                                                                            |
 | `kzv`    | `kustomize version`                                                            | Runs `kustomize version`                                                                         |
 
